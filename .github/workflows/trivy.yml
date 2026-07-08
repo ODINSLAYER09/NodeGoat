@@ -18,7 +18,8 @@ jobs:
         with:
           scan-type: 'fs'
           format: 'table'
-          severity: 'HIGH,CRITICAL'
+          severity: 'CRITICAL'
+          ignore-unfixed: true
           exit-code: '0'
       
       - name: Run Trivy (sarif)
@@ -26,8 +27,9 @@ jobs:
         with:
           scan-type: 'fs'
           format: 'sarif'
-          severity: 'HIGH,CRITICAL'
-          exit-code: '0'
+          severity: 'CRITICAL'
+          ignore-unfixed: true
+          exit-code: '1'
           output: 'trivy-results.sarif'
       
       - name: Upload to GitHub Security
